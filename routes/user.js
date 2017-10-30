@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
+const userDAO = require('../dbs/user')
 
 router.get('/', function(req, res) {
     //get all users
-    User.find({}, function(err, users) {
+    userDAO.getAllUsers(function(err, users) {
         if(err) {
-            console.log(err)
+            res.send('please check console')
             return
         }
         res.send(users)
@@ -15,15 +15,12 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
     //insert user
-    const user = new User()
-    user.name = req.body.name.trim()
-    user.save(function(err) {
+    userDAO.createUser(req.body.name, function(err) {
         if(err) {
-            console.log(err)
-            res.send("error please check console")
+            res.send('please check console log')
             return
         }
-        res.send("inserted")
+        res.send('inserted')
     })
 })
 
