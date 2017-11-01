@@ -1,7 +1,8 @@
 const User = require('../models/user')
 
-const getAllUsers = function(done) {
-    User.find({}, function (err, users) {
+const getAllUsers = function (done) {
+    //TODO: implement with promise
+    User.find().then(function (users, err) {
         if (err) {
             console.log(err)
             done(err, null)
@@ -11,16 +12,17 @@ const getAllUsers = function(done) {
     })
 }
 
-const createUser = function(name, done) {
+const createUser = function (name, done) {
+    //TODO: implement with promise
     const user = new User()
-    user.name = name.trim()
-    user.save(function(err) {
-        if(err) {
-            console.log(err)
-            done('error')
-            return
-        }
+    if (name) {
+        user.name = name.trim()
+    }
+    user.save().then(function (user) {
         done()
+    }, function (err) {
+        console.log(err)
+        done('error')        
     })
 }
 
