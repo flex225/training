@@ -16,7 +16,6 @@ const passport = require('./config/passport')
 //routes setup
 const routes = require('./routes')(app)
 
-
 app.listen(3000, function () {
     console.log('training app listening on port 3000!')
 })

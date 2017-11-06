@@ -1,5 +1,7 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
+
+router.use('/home', router)
 
 router.get('/', function (req, res) {
     res.send('home')

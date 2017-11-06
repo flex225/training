@@ -3,7 +3,7 @@ module.exports = function (app) {
     const auth = require('./auth')
     const user = require('./user')
 
-    app.use('/', home)
-    app.use('/auth', auth)
-    app.use('/user', user)
+    app.use('/api', home)
+    app.use('/api', auth)
+    app.use('/api', user)
 }

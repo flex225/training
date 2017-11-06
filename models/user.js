@@ -5,7 +5,9 @@ const UserSchema =  mongoose.Schema({
     name: {
         type: String,
         required: true
-    }
+    },
+    friends: [],
+    pendingFriends: []
 })
 
 //export user model for js
